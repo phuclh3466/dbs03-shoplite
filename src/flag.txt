@@ -1,0 +1,3 @@
+Tep nay khong con la mot phan cua thu thach (challenge da duoc thiet ke lai
+de chi tap trung vao loi SQL Injection). Cac flag hien tai nam trong CSDL,
+chi lay duoc thong qua khai thac SQLi dung cach.
