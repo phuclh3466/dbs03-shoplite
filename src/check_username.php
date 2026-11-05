@@ -25,15 +25,9 @@ if (preg_match('/(password|orders|flag_level1|flag_level2|flag_level5|secrets)/i
     exit;
 }
 
+$sql = "SELECT COUNT(*) FROM users WHERE username = '" . $u . "'";
 try {
-    // 1. Sử dụng prepared statement với placeholder (?) thay vì nối chuỗi
-    $stmt = $c->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
-    
-    // 2. Truyền biến $u vào mảng khi thực thi (PDO sẽ tự động escape an toàn)
-    $stmt->execute([$u]);
-    
-    // 3. Lấy kết quả
-    $taken = ((int) $stmt->fetchColumn()) > 0;
+    $taken = ((int) $c->query($sql)->fetchColumn()) > 0;
 } catch (Throwable $e) {
     $taken = false;
 }
